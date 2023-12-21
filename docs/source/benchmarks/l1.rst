@@ -1,0 +1,91 @@
+.. Copyright 2023 The Elastic AI Search Authors.
+.. Licensed under the Apache License, Version 2.0 (the "License");
+
+.. _l1 benchmark:
+
+L1 Benchmark
+==================================
+
+This benchmark measures the performance of the L1.
+
+.. raw:: html
+
+    <table>
+        <tr style="color:yellow;">
+            <td>name</td>
+            <td>iterations</td>
+            <td>real_time</td>
+            <td>cpu_time</td>
+            <td>time_unit</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L1/128&quot;</td>
+            <td>12771736</td>
+            <td>53.3481</td>
+            <td>53.349</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L1/256&quot;</td>
+            <td>6597475</td>
+            <td>106.128</td>
+            <td>106.129</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L1/512&quot;</td>
+            <td>3133538</td>
+            <td>223.806</td>
+            <td>223.811</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L1/1024&quot;</td>
+            <td>1530605</td>
+            <td>461.42</td>
+            <td>461.421</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L1/2048&quot;</td>
+            <td>737957</td>
+            <td>934.098</td>
+            <td>934.108</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L1_SIMD/128&quot;</td>
+            <td>69371738</td>
+            <td>9.84649</td>
+            <td>9.83772</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L1_SIMD/256&quot;</td>
+            <td>36883524</td>
+            <td>19.2288</td>
+            <td>19.1986</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L1_SIMD/512&quot;</td>
+            <td>18691725</td>
+            <td>37.4775</td>
+            <td>37.4145</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L1_SIMD/1024&quot;</td>
+            <td>10093222</td>
+            <td>66.8809</td>
+            <td>66.8596</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L1_SIMD/2048&quot;</td>
+            <td>5562445</td>
+            <td>127.418</td>
+            <td>127.252</td>
+            <td>ns</td>
+        </tr>
+    </table>

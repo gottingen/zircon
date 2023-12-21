@@ -18,6 +18,10 @@ Contents
 
     en/install
 
+.. toctree::
+    :caption: BENCHMARK
+
+    benchmark
 
 .. toctree::
     :maxdepth: 3

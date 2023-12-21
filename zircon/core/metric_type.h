@@ -45,7 +45,7 @@ namespace zircon {
          *        be computed as:
          *        d(x,y) = 2 - 2 * sum(x_i * y_i)
          */
-        METRIC_NORMALIZED_L2 = 2,
+        METRIC_NORMALIZED_L2 = 3,
 
         /**
          * @brief The inner product distance is also known as the dot product.
@@ -69,7 +69,7 @@ namespace zircon {
          *        be computed as:
          *        d(x,y) = 1 - sum(x_i * y_i) = 1 - distance_ip(x,y)
          */
-        METRIC_NORMALIZED_COSINE,
+        METRIC_NORMALIZED_COSINE = 6,
 
         /**
          * @brief The Jaccard distance is also known as the Jaccard index.
@@ -77,14 +77,14 @@ namespace zircon {
          *        It is defined as:
          *        d(x,y) = 1 - sum(min(x_i, y_i)) / sum(max(x_i, y_i))
          */
-        METRIC_MIN_MAX_JACCARD = 6,
+        METRIC_MIN_MAX_JACCARD = 7,
 
         /**
          * @brief The Jaccard distance binary version.
          *         it is defined as:
          *         d(x,y) = 1 - sum(x_i and y_i) / sum(x_i or y_i)
          */
-        METRIC_BINARY_JACCARD = 7,
+        METRIC_BITS_JACCARD = 8,
 
         /**
          * @brief The Hamming distance is a metric for comparing two binary data strings.
@@ -92,14 +92,14 @@ namespace zircon {
          *        It is defined as:
          *        d(x,y) = sum(x_i != y_i) means the number of different bits
          */
-        METRIC_HAMMING = 8,
+        METRIC_HAMMING = 9,
         /**
          * @brief The canberra distance is a weighted version of the Manhattan distance.
          *        wikipedia: https://en.wikipedia.org/wiki/Canberra_distance
          *        It is also known as the L1 norm distance. It is defined as:
          *        d(x,y) = sum(|x_i - y_i| / (|x_i| + |y_i|))
          */
-        METRIC_CANBERRA = 9,
+        METRIC_CANBERRA = 10,
 
         /**
          * @brief The LP distance is a generalization of the L1 and L2 norm distances.
@@ -107,7 +107,7 @@ namespace zircon {
          *       It is defined as:
          *       d(x,y) = sum(|x_i - y_i|^p)^(1/p)
          */
-        METRIC_LP = 10,
+        METRIC_LP = 11,
 
         /**
          * @brief The Bray Curtis distance is a metric for comparing two vectors.
@@ -115,7 +115,7 @@ namespace zircon {
          *        It is defined as:
          *        d(x,y) = sum(|x_i - y_i|) / sum(|x_i + y_i|)
          */
-        METRIC_BRAY_CURTIS = 11,
+        METRIC_BRAY_CURTIS = 12,
 
         /**
          * @brief The Jensen Shannon distance is a metric for comparing two probability distributions.
@@ -123,7 +123,7 @@ namespace zircon {
          *        It is defined as:
          *        d(x,y) = sum(x_i * log(2 * x_i / (x_i + y_i)) + y_i * log(2 * y_i / (x_i + y_i)))
          */
-        METRIC_JENSEN_SHANNON = 12,
+        METRIC_JENSEN_SHANNON = 13,
 
         /**
          * @brief The Linfinity distance is a metric for comparing two vectors.
@@ -132,7 +132,7 @@ namespace zircon {
          *       d(x,y) = max(|x_i - y_i|)
          */
 
-        METRIC_LINF = 13,
+        METRIC_LINF = 14,
 
         /**
          * @brief The cross entropy distance is a metric for comparing two vectors.
@@ -140,7 +140,7 @@ namespace zircon {
          *     It is defined as:
          *     d(x,y) = sum(x_i * log(y_i))
          */
-        METRIC_CROSS_ENTROPY= 14,
+        METRIC_CROSS_ENTROPY= 15,
 
         /**
          * @brief The Kullback Leibler divergence is a metric for comparing two probability distributions.
@@ -148,7 +148,7 @@ namespace zircon {
          *        It is defined as:
          *        d(x,y) = sum(x_i * log(x_i / y_i))
          */
-        METRIC_KLD = 15,
+        METRIC_KLD = 16,
 
         /**
          * @brief The Angle distance is a metric for comparing two vectors.
@@ -156,7 +156,7 @@ namespace zircon {
          *       It is defined as:
          *       d(x,y) = arccos(sum(x_i * y_i) / (sqrt(sum(x_i^2)) * sqrt(sum(y_i^2))))
          */
-        METRIC_ANGLE = 16,
+        METRIC_ANGLE = 17,
 
         /**
          * @brief The Normalized Angle distance is a metric for comparing two vectors.
@@ -164,7 +164,7 @@ namespace zircon {
          *       It is defined as:
          *       d(x,y) = 1 - sum(x_i * y_i) / (sqrt(sum(x_i^2)) * sqrt(sum(y_i^2))))
          */
-        METRIC_NORMALIZED_ANGLE = 17,
+        METRIC_NORMALIZED_ANGLE = 18,
 
         /**
          * @note not implemented yet
@@ -173,7 +173,7 @@ namespace zircon {
          *       It is defined as:
          *       d(x,y) = arccosh(1 + 2 * sum((x_i - y_i)^2) / ((1 - sum(x_i^2)) * (1 - sum(y_i^2))))
          */
-        METRIC_POINCARE = 18,
+        METRIC_POINCARE = 19,
 
         /**
          * @note not implemented yet
@@ -182,7 +182,7 @@ namespace zircon {
          *       It is defined as:
          *       d(x,y) = arccosh(1 + 2 * sum((x_i - y_i)^2) / ((1 + sum(x_i^2)) * (1 + sum(y_i^2))))
          */
-        METRIC_LORENTZ = 19,
+        METRIC_LORENTZ = 20,
     };
 }  // namespace zircon
 #endif  // ZIRCON_CORE_METRIC_TYPE_H_

@@ -344,7 +344,7 @@ namespace zircon::distance {
      * @param b the second vector
      * @return the distance of cosine.
      */
-    float simple_normalized_distance_cosine(turbo::Span<float> a, turbo::Span<float> b);
+    float simple_distance_normalized_cosine(turbo::Span<float> a, turbo::Span<float> b);
 
     /**
      * @ingroup zircon_utility_distance
@@ -356,7 +356,7 @@ namespace zircon::distance {
      * @param b the second vector
      * @return the distance of cosine.
      */
-    float normalized_distance_cosine(turbo::Span<float> a, turbo::Span<float> b);
+    float distance_normalized_cosine(turbo::Span<float> a, turbo::Span<float> b);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// Jaccard distance

@@ -25,3 +25,15 @@ carbin_cc_test(
         zircon::zircon
 
 )
+
+carbin_cc_test(
+        NAMESPACE zircon
+        NAME distance_l2_test
+        SOURCES distance_l2_test.cc
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+
+)

@@ -201,12 +201,12 @@ namespace zircon::distance {
 
     float simple_distance_normalized_l2(turbo::Span<float> a, turbo::Span<float> b) {
         auto ip = simple_distance_ip(a, b);
-        return 2.0f * (1.0f - ip);
+        return sqrt(2.0f * (1.0f - ip));
     }
 
     float distance_normalized_l2(turbo::Span<float> a, turbo::Span<float> b) {
         auto ip = distance_ip(a, b);
-        return 2.0f * (1.0f - ip);
+        return sqrt(2.0f * (1.0f - ip));
     }
 
     float simple_norm_l2(turbo::Span<float> a) {
@@ -335,12 +335,12 @@ namespace zircon::distance {
         return sum / std::sqrt(norm_a * norm_b);
     }
 
-    float simple_normalized_distance_cosine(turbo::Span<float> a, turbo::Span<float> b) {
+    float simple_distance_normalized_cosine(turbo::Span<float> a, turbo::Span<float> b) {
         auto ip = simple_distance_ip(a, b);
         return 1.0f - ip;
     }
 
-    float normalized_distance_cosine(turbo::Span<float> a, turbo::Span<float> b) {
+    float distance_normalized_cosine(turbo::Span<float> a, turbo::Span<float> b) {
         auto ip = distance_ip(a, b);
         return 1.0f - ip;
     }
@@ -776,7 +776,7 @@ namespace zircon::distance {
     /////////////////////////// Normalized Angle ////////////////////////////////
 
     float simple_distance_normalized_angle(turbo::Span<float> a, turbo::Span<float> b) {
-        double cosine = simple_normalized_distance_cosine(a, b);
+        double cosine = simple_distance_normalized_cosine(a, b);
         if (cosine >= 1.0) {
             return 0.0;
         } else if (cosine <= -1.0) {
@@ -787,7 +787,7 @@ namespace zircon::distance {
     }
 
     float distance_normalized_angle(turbo::Span<float> a, turbo::Span<float> b) {
-        double cosine = normalized_distance_cosine(a, b);
+        double cosine = distance_normalized_cosine(a, b);
         if (cosine >= 1.0) {
             return 0.0;
         } else if (cosine <= -1.0) {

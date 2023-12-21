@@ -1,0 +1,128 @@
+.. Copyright 2023 The Elastic AI Search Authors.
+.. Licensed under the Apache License, Version 2.0 (the "License");
+
+.. _l2 benchmark:
+
+L2 Benchmark
+===================================
+
+This benchmark measures the performance of the L2 distance function.
+
+.. raw:: html
+
+
+    <table>
+        <tr style="color:yellow;">
+            <td>name</td>
+            <td>iterations</td>
+            <td>real_time</td>
+            <td>cpu_time</td>
+            <td>time_unit</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L2/128&quot;</td>
+            <td>7186813</td>
+            <td>93.2994</td>
+            <td>93.3004</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L2/256&quot;</td>
+            <td>3027556</td>
+            <td>231.622</td>
+            <td>231.627</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L2/512&quot;</td>
+            <td>1336116</td>
+            <td>528.793</td>
+            <td>528.806</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L2/1024&quot;</td>
+            <td>629396</td>
+            <td>1114.21</td>
+            <td>1114.23</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:gray;">
+            <td>&quot;BM_L2/2048&quot;</td>
+            <td>303812</td>
+            <td>2304.64</td>
+            <td>2304.69</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L2_SIMD/128&quot;</td>
+            <td>70980508</td>
+            <td>9.81373</td>
+            <td>9.81391</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L2_SIMD/256&quot;</td>
+            <td>32032245</td>
+            <td>21.5703</td>
+            <td>21.5705</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L2_SIMD/512&quot;</td>
+            <td>13781953</td>
+            <td>49.5024</td>
+            <td>49.5031</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L2_SIMD/1024&quot;</td>
+            <td>6171619</td>
+            <td>113.911</td>
+            <td>113.914</td>
+            <td>ns</td>
+        </tr>
+        <tr>
+            <td>&quot;BM_L2_SIMD/2048&quot;</td>
+            <td>2692185</td>
+            <td>261.129</td>
+            <td>261.135</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:green;">
+            <td>&quot;BM_FAST_L2_SIMD/128&quot;</td>
+            <td>71421654</td>
+            <td>10.0314</td>
+            <td>10.0317</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:green;">
+            <td>&quot;BM_FAST_L2_SIMD/256&quot;</td>
+            <td>35143687</td>
+            <td>19.1535</td>
+            <td>19.1534</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:green;">
+            <td>&quot;BM_FAST_L2_SIMD/512&quot;</td>
+            <td>16787173</td>
+            <td>41.7534</td>
+            <td>41.754</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:green;">
+            <td>&quot;BM_FAST_L2_SIMD/1024&quot;</td>
+            <td>7265060</td>
+            <td>93.3277</td>
+            <td>93.3295</td>
+            <td>ns</td>
+        </tr>
+        <tr style="color:green;">
+            <td>&quot;BM_FAST_L2_SIMD/2048&quot;</td>
+            <td>3297667</td>
+            <td>210.356</td>
+            <td>210.36</td>
+            <td>ns</td>
+        </tr>
+    </table>
+

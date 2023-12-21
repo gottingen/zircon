@@ -17,8 +17,10 @@
 //
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
 #include "turbo/testing/test.h"
 #include "zircon/utility/primitive_distance.h"
+#include "zircon/utility/distance.h"
 #include "zircon/core/allocator.h"
 #include "turbo/random/random.h"
 #include <vector>
@@ -33,6 +35,7 @@ public:
             b_vec[i] = turbo::uniform(1.0f, 100.0f);
         }
     }
+
     ~DistanceL1Test() = default;
 
     std::vector<float, turbo::aligned_allocator<float, 64>> a_vec;
@@ -46,7 +49,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance l1") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto distance = zircon::distance::distance_l1(a_span, b_span);
     auto simple_distance = zircon::distance::simple_distance_l1(a_span, b_span);
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -56,7 +59,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance l2") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto distance = zircon::distance::distance_l2(a_span, b_span);
     auto simple_distance = zircon::distance::simple_distance_l2(a_span, b_span);
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -66,7 +69,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance ip") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto distance = zircon::distance::distance_ip(a_span, b_span);
     auto simple_distance = zircon::distance::simple_distance_ip(a_span, b_span);
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -76,7 +79,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance cosine") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto distance = zircon::distance::distance_cosine(a_span, b_span);
     auto simple_distance = zircon::distance::simple_distance_cosine(a_span, b_span);
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -86,7 +89,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance jaccard") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto distance = zircon::distance::distance_min_max_jaccard(a_span, b_span);
     auto simple_distance = zircon::distance::simple_distance_min_max_jaccard(a_span, b_span);
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -97,7 +100,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance bits jaccard") {
     auto simple_distance = zircon::distance::simple_distance_bits_jaccard(a_span, b_span);
     auto distance = zircon::distance::distance_bits_jaccard(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -108,7 +111,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance hamming") {
     auto simple_distance = zircon::distance::simple_distance_hamming(a_span, b_span);
     auto distance = zircon::distance::distance_hamming(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -119,7 +122,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance Canberra") {
     auto simple_distance = zircon::distance::simple_distance_canberra(a_span, b_span);
     auto distance = zircon::distance::distance_canberra(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -130,7 +133,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance LP") {
     auto simple_distance = zircon::distance::simple_distance_lp(a_span, b_span, 3.0f);
     auto distance = zircon::distance::distance_lp(a_span, b_span, 3.0);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -141,7 +144,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance Bray Curtis") {
     auto simple_distance = zircon::distance::simple_distance_bray_curtis(a_span, b_span);
     auto distance = zircon::distance::distance_bray_curtis(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -152,7 +155,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance Jensen Shannon") {
     auto simple_distance = zircon::distance::simple_distance_jensen_shannon(a_span, b_span);
     auto distance = zircon::distance::distance_jensen_shannon(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -163,7 +166,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance linf") {
     auto simple_distance = zircon::distance::simple_distance_linf(a_span, b_span);
     auto distance = zircon::distance::distance_linf(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -175,9 +178,10 @@ public:
         b_vec.resize(256);
         for (size_t i = 0; i < a_vec.size(); ++i) {
             a_vec[i] = turbo::uniform(0.01f, 0.9f);
-            b_vec[i] = 1- a_vec[i];
+            b_vec[i] = 1 - a_vec[i];
         }
     }
+
     ~DistanceEntropyTest() = default;
 
     std::vector<float, turbo::aligned_allocator<float, 64>> a_vec;
@@ -192,7 +196,7 @@ TEST_CASE_FIXTURE(DistanceEntropyTest, "distance cross entropy") {
     auto simple_distance = zircon::distance::simple_distance_cross_entropy(a_span, b_span);
     auto distance = zircon::distance::distance_cross_entropy(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -203,7 +207,7 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance kld") {
     auto simple_distance = zircon::distance::simple_distance_kld(a_span, b_span);
     auto distance = zircon::distance::distance_kld(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
 
 }
 
@@ -213,7 +217,9 @@ TEST_CASE_FIXTURE(DistanceL1Test, "distance angle") {
     auto b_span = turbo::Span<float>(b_vec.data(), b_vec.size());
     auto simple_distance = zircon::distance::simple_distance_angle(a_span, b_span);
     auto distance = zircon::distance::distance_angle(a_span, b_span);
+    auto distance2 = zircon::VectorDistance<zircon::MetricType::METRIC_ANGLE>().distance(a_span, b_span);
 
-    CHECK(distance == doctest::Approx(simple_distance));
+    CHECK_EQ(distance, doctest::Approx(simple_distance));
+    CHECK_EQ(distance2, doctest::Approx(simple_distance));
 
 }
