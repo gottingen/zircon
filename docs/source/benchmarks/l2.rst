@@ -10,44 +10,48 @@ This benchmark measures the performance of the L2 distance function.
 
 .. raw:: html
 
+    <style>
+        table,table tr th, table tr td { border:1px solid #0094ff; }
+        table {line-height: 25px; text-align: center; border-collapse: collapse; color: #F09033; background-color: #2E1E1E;}
+    </style>
 
     <table>
-        <tr style="color:yellow;">
+        <tr>
             <td>name</td>
             <td>iterations</td>
             <td>real_time</td>
             <td>cpu_time</td>
             <td>time_unit</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L2/128&quot;</td>
             <td>7186813</td>
             <td>93.2994</td>
             <td>93.3004</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L2/256&quot;</td>
             <td>3027556</td>
             <td>231.622</td>
             <td>231.627</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L2/512&quot;</td>
             <td>1336116</td>
             <td>528.793</td>
             <td>528.806</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L2/1024&quot;</td>
             <td>629396</td>
             <td>1114.21</td>
             <td>1114.23</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L2/2048&quot;</td>
             <td>303812</td>
             <td>2304.64</td>

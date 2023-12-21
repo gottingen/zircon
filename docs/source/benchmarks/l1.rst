@@ -10,43 +10,48 @@ This benchmark measures the performance of the L1.
 
 .. raw:: html
 
-    <table>
-        <tr style="color:yellow;">
+    <style>
+        table,table tr th, table tr td { border:1px solid #0094ff; }
+        table {line-height: 25px; text-align: center; border-collapse: collapse; color: #F09033; background-color: #2E1E1E;}
+    </style>
+
+    <table border=1px>
+        <tr>
             <td>name</td>
             <td>iterations</td>
             <td>real_time</td>
             <td>cpu_time</td>
             <td>time_unit</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L1/128&quot;</td>
             <td>12771736</td>
             <td>53.3481</td>
             <td>53.349</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L1/256&quot;</td>
             <td>6597475</td>
             <td>106.128</td>
             <td>106.129</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L1/512&quot;</td>
             <td>3133538</td>
             <td>223.806</td>
             <td>223.811</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L1/1024&quot;</td>
             <td>1530605</td>
             <td>461.42</td>
             <td>461.421</td>
             <td>ns</td>
         </tr>
-        <tr style="color:gray;">
+        <tr>
             <td>&quot;BM_L1/2048&quot;</td>
             <td>737957</td>
             <td>934.098</td>
