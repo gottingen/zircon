@@ -494,11 +494,11 @@ namespace zircon::distance {
             b_type bvec = b_type::load(&b[i], turbo::aligned_mode());
             b_type abs_sum = turbo::simd::abs(avec) + turbo::simd::abs(bvec);
             b_type abs_diff = turbo::simd::abs(avec - bvec);
-            auto mask = turbo::simd::abs(abs_sum) > zero_vec;
+            //auto mask = turbo::simd::abs(abs_sum) > zero_vec;
             // if |q| + |p| == 0 means that both are zero
             // in this case we let the |q -p| / (|q| + |p|) to be zero
-            auto fixed_abs_sum = turbo::simd::select(mask, abs_sum, one_vec);
-            sum_vec += abs_diff / fixed_abs_sum;
+            //auto fixed_abs_sum = turbo::simd::select(mask, abs_sum, one_vec);
+            sum_vec += abs_diff / abs_sum;
         }
 
         sum += turbo::simd::reduce_add(sum_vec);

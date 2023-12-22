@@ -27,3 +27,171 @@ carbin_cc_benchmark(
         benchmark::benchmark
         benchmark::benchmark_main
 )
+
+carbin_cc_benchmark(
+        NAME
+        cosine_benchmark
+        SOURCES
+        "cosine_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        hamming_benchmark
+        SOURCES
+        "hamming_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        canberra_benchmark
+        SOURCES
+        "canberra_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        bray_curtis_benchmark
+        SOURCES
+        "bray_curtis_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        jensen_shannon_benchmark
+        SOURCES
+        "jensen_shannon_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        cross_entropy_benchmark
+        SOURCES
+        "cross_entropy_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        jaccard_benchmark
+        SOURCES
+        "jaccard_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        linf_benchmark
+        SOURCES
+        "linf_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        angle_benchmark
+        SOURCES
+        "angle_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        kld_benchmark
+        SOURCES
+        "kld_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+
+carbin_cc_benchmark(
+        NAME
+        lp_benchmark
+        SOURCES
+        "lp_benchmark.cc"
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)
+file(GLOB BENCHMARK_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.cc)
+carbin_cc_benchmark(
+        NAME
+        benchmark_in_one
+        SOURCES
+        ${BENCHMARK_FILES}
+        COPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        ${CARBIN_DEPS_LINK}
+        zircon::zircon
+        benchmark::benchmark
+        benchmark::benchmark_main
+)

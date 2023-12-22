@@ -22,7 +22,7 @@ carbin_cc_benchmark(
         COPTS ${USER_CXX_FLAGS}
 )
 ]]
-
+file(COPY bench.py DESTINATION ${PROJECT_BINARY_DIR})
 find_package(benchmark REQUIRED)
 add_subdirectory(distance)
 
