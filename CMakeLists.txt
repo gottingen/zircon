@@ -17,23 +17,44 @@
 # generate by carbin package manager tools for titan-search
 # https://github.com/gottingen/carbin
 ####################################################################################
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.24)
 
 project(zircon CXX)
 
+option(${PROJECT_NAME}_IS_TOP_PROJECT "zircon project is the top level project or not" ON)
+
+get_property(not_top DIRECTORY PROPERTY PARENT_DIRECTORY)
+if (not_top)
+    set(${PROJECT_NAME}_IS_TOP_PROJECT OFF)
+endif ()
+message(STATUS ${PROJECT_NAME}_IS_TOP_PROJECT)
+
 set(PROJECT_DESCRIPTION "Hercules is an ahead of time compiler for a subset of the Python language framework.")
-set(PROJECT_VERSION_MAJOR 0)
+set(PROJECT_VERSION_MAJOR 1)
 set(PROJECT_VERSION_MINOR 1)
 set(PROJECT_VERSION_PATCH 5)
 set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-set(CARBIN_VERSION 0.2.0)
+
+set(${PROJECT_NAME}_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set(${PROJECT_NAME}_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set(${PROJECT_NAME}_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+set(${PROJECT_NAME}_VERSION ${PROJECT_VERSION})
+
+
+set(CARBIN_VERSION 0.5.0)
+set(CARBIN_CMAKE_VERSION 0.5.0)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/carbin_cmake)
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+##################################################################
+# add this for ${PROJECT_NAME} 's cmake include
+##################################################################
+list(APPEND CMAKE_MODULE_PATH ${${PROJECT_NAME}_SOURCE_DIR}/cmake)
 #################################################################
 #
 # modify the CARBIN_DEPS_PREFIX to you prefix if needed.
 # for example when you install you deps to "/opt/handsome/guy
 # modify as set(CARBIN_DEPS_PREFIX /opt/handsome/guy)
+# this should be PROJECT_SOURCE_DIR, only install libraries
+# deps to top level project
 #################################################################
 set(CARBIN_DEPS_PREFIX ${PROJECT_SOURCE_DIR}/carbin)
 #######################################################################
@@ -46,23 +67,24 @@ include(carbin_module)
 #
 # your cmake directory ${PROJECT_SOURCE_DIR}/cmake, do things here
 #################################################################
-include(user_deps)
-include(user_cxx_config)
+include(zircon_deps)
+include(zircon_cxx_config)
+include(zircon_test)
 
 add_subdirectory(zircon)
 ####################################################################
 # belows are auto, edit it be cation
 ####################################################################
 if (CARBIN_BUILD_TEST)
-    add_subdirectory(tests)
+    #add_subdirectory(tests)
 endif ()
 
 if (CARBIN_BUILD_BENCHMARK)
-    add_subdirectory(benchmark)
+    #add_subdirectory(benchmark)
 endif ()
 
 if (CARBIN_BUILD_EXAMPLES)
-    add_subdirectory(examples)
+    #add_subdirectory(examples)
 endif ()
 
 ##############################################
@@ -79,7 +101,7 @@ install(DIRECTORY ${PROJECT_NAME}
 #   * <prefix>/lib*/cmake/<PROJECT-NAME>
 #   * <prefix>/lib*/
 #   * <prefix>/include/
-set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/carbin_cmake/${PROJECT_NAME}")
+set(config_install_dir "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
 
 set(generated_dir "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
@@ -104,7 +126,7 @@ write_basic_package_version_file(
 #   * TARGETS_EXPORT_NAME
 #   * PROJECT_NAME
 configure_package_config_file(
-        "carbin_cmake/package/carbin_config.cmake.in"
+        "cmake/zircon_config.cmake.in"
         "${project_config}"
         INSTALL_DESTINATION "${config_install_dir}"
 )
@@ -137,3 +159,8 @@ install(
         DESTINATION
         "${config_install_dir}"
 )
+configure_file(${PROJECT_SOURCE_DIR}/carbin_cmake/package/pkg_dump_template.pc.in
+        ${PROJECT_BINARY_DIR}/package/${PROJECT_NAME}.pc)
+
+install(FILES ${PROJECT_BINARY_DIR}/package/${PROJECT_NAME}.pc DESTINATION lib/pkgconfig)
+include(zircon_cpack_config)

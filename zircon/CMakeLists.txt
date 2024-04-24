@@ -17,21 +17,114 @@
 # below are examples, after initialization, modify it to your own.
 ###########################################################################
 ###carbin_example
-
-set(ZIRCON_SRC
-        core/index.cc
-        store/mem_vector_store.cc
-        utility/id_filter.cc
-        utility/primitive_distance.cc
-)
 carbin_cc_library(
         NAMESPACE zircon
-        NAME zircon
+        NAME foo
         SOURCES
-        ${ZIRCON_SRC}
-        COPTS
+        foo.cc
+        CXXOPTS
         ${CARBIN_CXX_OPTIONS}
-        DEPS
+        PLINKS
         ${CARBIN_DEPS_LINK}
         PUBLIC
 )
+
+carbin_cc_library(
+        NAMESPACE zircon
+        NAME object
+        SOURCES
+        object.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        PLINKS
+        ${CARBIN_DEPS_LINK}
+        PUBLIC
+)
+
+carbin_cc_library(
+        NAMESPACE zircon
+        NAME share
+        SOURCES
+        shared.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::object
+        PLINKS
+        ${CARBIN_DEPS_LINK}
+        zircon::object
+)
+
+carbin_cc_interface(
+        NAMESPACE zircon
+        NAME api
+        HEADERS
+        api.h
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        PUBLIC
+)
+
+carbin_cc_binary(
+        NAMESPACE zircon
+        NAME shared_main
+        SOURCES
+        main.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::share
+        LINKS
+        ${CARBIN_DEPS_LINK}
+        zircon::share
+        PUBLIC
+)
+
+carbin_cc_object(
+        NAMESPACE zircon
+        NAME obj1
+        SOURCES object1.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::object
+)
+
+carbin_cc_object(
+        NAMESPACE zircon
+        NAME obj2
+        SOURCES object2.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::object
+)
+
+carbin_cc_library(
+        NAMESPACE zircon
+        NAME obm_source
+        OBJECTS obj1 obj2
+        SOURCES shared.cc
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::object
+        PLINKS
+        ${CARBIN_DEPS_LINK}
+        zircon::object
+)
+
+carbin_cc_library(
+        NAMESPACE zircon
+        NAME obm_no_source
+        OBJECTS obj1 obj2
+        CXXOPTS
+        ${CARBIN_CXX_OPTIONS}
+        DEPS
+        zircon::object
+        PLINKS
+        ${CARBIN_DEPS_LINK}
+        zircon::object
+)
+
+###carbin_example
